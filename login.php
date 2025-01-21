@@ -1,5 +1,7 @@
 <?php
 require_once('loader.inc.php');
+
+session_name('TICKONIX_SESSID_'.md5(__DIR__));
 session_start();
 
 $info = null;
@@ -10,8 +12,8 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
 	if(!empty(ADMIN_USERNAME) && !empty(ADMIN_PASSWORD)
 	&& strtolower(trim($_POST['username'])) === strtolower(trim(ADMIN_USERNAME))
 	&& $_POST['password'] === ADMIN_PASSWORD) {
-		$_SESSION['tickonix_login'] = ADMIN_USERNAME;
-		$_SESSION['tickonix_installation'] = dirname(__FILE__);
+		$_SESSION['login'] = ADMIN_USERNAME;
+		$_SESSION['installation'] = dirname(__FILE__);
 		header('Location: admin.php');
 		die('Rap braucht wieder einen Märchen-Erzähler.');
 	} else {
@@ -22,14 +24,14 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
 }
 // logout if requested
 elseif(isset($_GET['logout'])) {
-	if(isset($_SESSION['tickonix_login'])) {
+	if(isset($_SESSION['login'])) {
 		session_destroy();
 		$info = LANG('logout_successful');
 		$infoclass = 'green';
 	}
 }
 // check if already logged in
-elseif(isset($_SESSION['tickonix_login'])) {
+elseif(isset($_SESSION['login'])) {
 	header('Location: admin.php');
 	die();
 }

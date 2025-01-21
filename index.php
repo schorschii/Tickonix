@@ -1,5 +1,7 @@
 <?php
 require_once('loader.inc.php');
+
+session_name('TICKONIX_SESSID_'.md5(__DIR__));
 session_start();
 
 $info = null;
