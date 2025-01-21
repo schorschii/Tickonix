@@ -63,12 +63,12 @@ try {
 					if($ticket['revoked']) {
 						$info = LANG('reservation_was_revoked');
 						$infoClass = 'red';
-						$sound = 'img/fail.mp3';
+						$sound = 'img/error.mp3';
 					} elseif($isCheckin) {
 						if($ticket['checked_in']) {
 							$info = LANG('code_already_checked_in');
 							$infoClass = 'yellow';
-							$sound = 'img/gong.mp3';
+							$sound = 'img/warning.mp3';
 						} else {
 							$info = LANG('code_valid_checkin');
 							$infoClass = 'green';
@@ -79,7 +79,7 @@ try {
 						if($ticket['checked_out']) {
 							$info = LANG('code_already_checked_out');
 							$infoClass = 'yellow';
-							$sound = 'img/gong.mp3';
+							$sound = 'img/warning.mp3';
 						} else {
 							$info = LANG('code_valid_checkout');
 							$infoClass = 'green';
@@ -93,7 +93,7 @@ try {
 			if(!$found) {
 				$info = LANG('code_not_found');
 				$infoClass = 'red';
-				$sound = 'img/fail.mp3';
+				$sound = 'img/error.mp3';
 			}
 			// return JSON for AJAX request
 			$table = getTicketsTableHtml($db->getTickets($_GET['event']));
