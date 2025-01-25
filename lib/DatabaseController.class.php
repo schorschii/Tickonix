@@ -20,7 +20,7 @@ class DatabaseController {
 	}
 
 	public function getEvents() {
-		$this->stmt = $this->dbh->prepare('SELECT * FROM event');
+		$this->stmt = $this->dbh->prepare('SELECT * FROM event ORDER BY start, id');
 		$this->stmt->execute();
 		$events = [];
 		foreach($this->stmt->fetchAll() as $row) {
