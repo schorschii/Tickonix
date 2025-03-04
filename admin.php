@@ -322,7 +322,7 @@ function generateVoucherQrImage($url, $code) {
 									<div><?php echo htmlspecialchars($event['title']); ?></div>
 									<div class='hint'><?php echo htmlspecialchars(shortenDateRange($event['start'], $event['end'])); ?></div>
 									<div class='hint'><?php echo htmlspecialchars($event['location']); ?></div>
-									<div class='hint'><?php echo htmlspecialchars($event['tickets_per_email']); ?>&nbsp;Tickets/E-Mail</div>
+									<div class='hint'><?php echo htmlspecialchars($event['tickets_per_email']); ?>&nbsp;<?php echo str_replace('<br>', '', LANG('reservations_per_email')); ?></div>
 								</td>
 								<td>
 									<div class='voucheronly'><?php echo $event['voucher_only'] ? 'nur mit Voucher' : ''; ?></div>

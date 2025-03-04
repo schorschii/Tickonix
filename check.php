@@ -218,7 +218,7 @@ function getTicketsTableHtml($tickets) {
 								<tr>
 									<th><input type='checkbox' onclick='toggleCheckboxesInContainer(tblTickets, this.checked)'></th>
 									<th><?php echo LANG('code'); ?></th>
-									<th><?php echo LANG('E-Mail'); ?></th>
+									<th><?php echo LANG('email'); ?></th>
 									<th><?php echo LANG('voucher'); ?></th>
 								</tr>
 							</thead>
