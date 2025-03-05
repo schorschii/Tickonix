@@ -174,7 +174,7 @@ if(!empty($_POST['captcha'])
 												$addText = '('.str_replace('%1', date(DATE_FORMAT.' '.TIME_FORMAT,strtotime($event['reservation_end'])), LANG('was_bookable_until')).')';
 												$unavail = true;
 											} else {
-												$addText = '('.str_replace('%1', intval($event['max']-$reservedCount), LANG('places_free')).')';
+												$addText = shortenDateRange($event['start'], $event['end']).' ('.str_replace('%1', intval($event['max']-$reservedCount), LANG('places_free')).')';
 											}
 										?>
 										<option value='<?php echo htmlspecialchars($key, ENT_QUOTES); ?>' <?php if($unavail) echo 'disabled'; ?> <?php if($selected) echo 'selected'; ?> <?php if($voucherOnly) echo 'voucher_only="true"'; ?>>
