@@ -10,7 +10,13 @@ class InvitationMailer {
 		string $title, array $event, string $code, string $token,
 		string $recipient, string $senderName, string $senderMail, string $replyTo=null
 	) {
-		$mime = new Mail_mime("\r\n");
+		$mime = new Mail_mime([
+			'eol'           => "\r\n",
+			'text_encoding' => '7bit',
+			'text_charset'  => 'UTF-8',
+			'html_charset'  => 'UTF-8',
+			'head_charset'  => 'UTF-8',
+		]);
 
 		// add calendar event attachment
 		$mime->addAttachment(
@@ -58,12 +64,7 @@ class InvitationMailer {
 		$mail = Mail::factory('sendmail');
 		$mail->send($recipient,
 			$mime->headers($headers),
-			$mime->get([
-				'text_encoding' => '7bit',
-				'text_charset'  => 'UTF-8',
-				'html_charset'  => 'UTF-8',
-				'head_charset'  => 'UTF-8',
-			])
+			$mime->get()
 		);
 	}
 
